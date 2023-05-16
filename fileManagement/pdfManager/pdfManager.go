@@ -19,22 +19,22 @@ func init() {
 	}
 }
 
-type PdfReader struct {
+type PdfManager struct {
 	reader    *model.PdfReader
 	fromPage  int
 	untilPage int
 	fileName  string
 }
 
-func NewPdfReader(fileName string, fromPage, untilPage int) PdfReaderInterface {
-	r := new(PdfReader)
+func NewPdfManager(fileName string, fromPage, untilPage int) PdfManagerInterface {
+	r := new(PdfManager)
 	r.fromPage = fromPage
 	r.untilPage = untilPage
 	r.fileName = fileName
 	return r
 }
 
-func (r *PdfReader) Read() string {
+func (r *PdfManager) Read() string {
 	// TODO Concurrency (parallelize the reading of the pages)
 
 	// Open a PDF file.
@@ -76,7 +76,11 @@ func (r *PdfReader) Read() string {
 	return <-ch
 }
 
-func (r *PdfReader) validatePageRange(fromPage, untilPage int) {
+func (r *PdfManager) CreatePdf(fileName, fileContent string) {
+	panic("Not implemented")
+}
+
+func (r *PdfManager) validatePageRange(fromPage, untilPage int) {
 
 	// Get number of pages.
 	numPages, err := r.reader.GetNumPages()

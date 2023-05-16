@@ -9,7 +9,7 @@ import (
 )
 
 func TestReadPdfInRange(t *testing.T) {
-	pdfManager := pdfManager.NewPdfReader("../../TheWitcher.pdf", 2, 2)
+	pdfManager := pdfManager.NewPdfManager("../../TheWitcher.pdf", 2, 2)
 
 	secondPageOfBook := pdfManager.Read()
 
